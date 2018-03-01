@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db
+    username: root
+    password: copo
+    tomcat:
+      max-wait: 20000
+      max-active: 50
+      max-idle: 20
+      min-idle: 15
+  jpa:
+    properties:
+      hibernate.hbm2ddl:
+        auto: create
+
+# JWT
+jwt:
+  header: Authorization
+  secret: secret
+  expiration: 604800
+  tokenHead: "Bearer "
+
+# Captcha
+auth:
+  captcha:
+    expiration: 300000 # 5 minutes
+    resend.interval: 60000 # 1 minutes

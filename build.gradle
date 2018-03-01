@@ -1,0 +1,45 @@
+group 'copoder'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()//依赖Maven仓库
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+//生成的jar包包名和版本
+jar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+//设置jdk的版本
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//添加编译时的依赖
+dependencies {
+    //SpringBoot框架
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    //restful
+    compile('org.springframework.boot:spring-boot-starter-jersey')
+
+    //持久化
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    runtime('mysql:mysql-connector-java')
+    compile('io.jsonwebtoken:jjwt:0.9.0')
+    compile('org.springframework.boot:spring-boot-starter-security')
+}
